@@ -1,0 +1,36 @@
+{
+    "name": "indie-card-games",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "android": "react-native run-android",
+        "ios": "react-native run-ios",
+        "start": "react-native start",
+        "pretty": "prettier --write \"{src,types}/**/*.{ts,tsx,js}\"",
+        "lint": "tslint --project tsconfig.json"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn run lint && yarn pretty"
+        }
+    },
+    "dependencies": {
+        "react": "16.9.0",
+        "react-native": "0.61.5"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/runtime": "^7.7.7",
+        "@types/react": "^16.9.17",
+        "@types/react-native": "^0.60.27",
+        "husky": "^3.1.0",
+        "metro-react-native-babel-preset": "^0.57.0",
+        "prettier": "^1.19.1",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-config-standard": "^9.0.0",
+        "tslint-etc": "^1.10.0",
+        "tslint-react": "^4.1.0",
+        "typescript": "^3.7.4"
+    }
+}
