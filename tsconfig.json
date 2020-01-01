@@ -25,11 +25,8 @@
             "@config/*": ["src/config/*"],
             "@assets/*": ["src/assets/*"],
             "@screens/*": ["src/screens/*"],
-            "@services/*": ["src/services/*"],
-            "@themes": ["src/themes"],
             "@types": ["src/types"],
-            "@utils/*": ["src/utils/*"],
-            "@e2eUtils/*": ["e2e/utils/*"]
+            "@utils/*": ["src/utils/*"]
         }
     },
     "exclude": ["node_modules"]
