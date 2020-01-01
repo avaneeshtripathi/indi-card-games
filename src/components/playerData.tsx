@@ -19,16 +19,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     playerName: {
-        color: Theme.colors.text.primary,
+        color: Theme.colors.screen.green,
         fontWeight: 'bold',
         fontSize: 14,
         flex: 1,
     },
     playerScore: {
-        color: Theme.colors.text.primary,
+        color: Theme.colors.screen.green,
         fontWeight: 'bold',
         fontSize: 14,
         flex: 1,
+    },
+    lineThrough: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid',
+        color: Theme.colors.screen.red,
     },
 });
 
@@ -42,8 +47,14 @@ export default ({ data }: TProps) => {
             {data.map((player: TPlayer, index: number) => (
                 <React.Fragment key={index}>
                     <View style={styles.labelCtr}>
-                        <Text style={styles.playerName}>{player.label}</Text>
-                        <Text style={styles.playerScore}>{player.value}</Text>
+                        <Text style={StyleSheet.flatten([styles.playerName, player.invalid ? styles.lineThrough : {}])}>
+                            {player.label}
+                        </Text>
+                        <Text
+                            style={StyleSheet.flatten([styles.playerScore, player.invalid ? styles.lineThrough : {}])}
+                        >
+                            {player.value > 0 ? `+${player.value}` : player.value}
+                        </Text>
                     </View>
                 </React.Fragment>
             ))}

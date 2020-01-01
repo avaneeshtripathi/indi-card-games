@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
     buttonCtr: {
         paddingVertical: 6,
         paddingHorizontal: 10,
-        backgroundColor: Theme.colors.screen.blueDark,
+        backgroundColor: Theme.colors.screen.blue,
         borderRadius: 4,
         elevation: 4,
     },
     buttonText: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         fontWeight: 'bold',
     },
     formField: {
@@ -110,17 +110,19 @@ export default class AddGameData extends React.Component<TProps, TState> {
                 )}
                 {addingData && (
                     <View>
-                        {playerData.map((player, index) => (
-                            <View key={index} style={styles.formField}>
-                                <Text style={styles.playerName}>{player.label}</Text>
-                                <TextInput
-                                    ref={input => (this[`${player.key}-input`] = input)}
-                                    style={styles.input}
-                                    placeholder="Add Score"
-                                    keyboardType={'numeric'}
-                                />
-                            </View>
-                        ))}
+                        {playerData.map((player: TPlayer, index: number) =>
+                            player.invalid ? null : (
+                                <View key={index} style={styles.formField}>
+                                    <Text style={styles.playerName}>{player.label}</Text>
+                                    <TextInput
+                                        ref={input => (this[`${player.key}-input`] = input)}
+                                        style={styles.input}
+                                        placeholder="Add Score"
+                                        keyboardType={'numeric'}
+                                    />
+                                </View>
+                            ),
+                        )}
                         <View style={styles.buttonWrapper}>
                             <Touchable onPress={this.toggleAddGameData}>
                                 <View style={styles.buttonCtr}>

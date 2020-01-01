@@ -5,6 +5,7 @@ import PlayerData from '@components/playerData';
 import AddGameData from '@components/addGameData';
 import RoundData from '@components/roundData';
 import Touchable from '@components/touchable';
+import Results from '@components/results';
 import Theme from '@config/theme';
 import AppHeader from '@utils/appHeader';
 import Helper from '@utils/helper';
@@ -44,12 +45,13 @@ const styles = StyleSheet.create({
         paddingVertical: 9,
         paddingHorizontal: 10,
         width: '100%',
-        backgroundColor: Theme.colors.screen.blueDark,
+        backgroundColor: Theme.colors.screen.blue,
     },
     submitButtonText: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         textAlign: 'center',
-        fontWeight: '900',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
         fontSize: 14,
     },
 });
@@ -69,28 +71,11 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
     static navigationOptions = ({ navigation }: { navigation: TNavigation }) => AppHeader(navigation);
 
     state = {
-        currentStep: 2,
-        gameLimit: 100,
-        playerData: [
-            { key: 1577892099643, label: 'HAFSHDSV', value: 0 },
-            { key: 1577892100834, label: 'AJHGSDJHSDF', value: 0 },
-            { key: 1577892101963, label: 'AJHFJSD', value: 0 },
-            { key: 1577892103611, label: 'JAHGFJH', value: 0 },
-        ],
-        gameData: [
-            {
-                '1577892099643': { score: 0, label: 'HAFSHDSV' },
-                '1577892100834': { score: 40, label: 'AJHGSDJHSDF' },
-                '1577892101963': { score: 60, label: 'AJHFJSD' },
-                '1577892103611': { score: 10, label: 'JAHGFJH' },
-            },
-            {
-                '1577892099643': { score: 40, label: 'HAFSHDSV' },
-                '1577892100834': { score: 0, label: 'AJHGSDJHSDF' },
-                '1577892101963': { score: 30, label: 'AJHFJSD' },
-                '1577892103611': { score: 40, label: 'JAHGFJH' },
-            },
-        ],
+        currentStep: 0,
+        gameLimit: 0,
+        playerData: [],
+        gameData: [],
+        finalStats: { winner: null, loosers: [] },
     };
 
     addPlayers = (playerData: TPlayer[]) =>
@@ -104,27 +89,40 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
     submitGameLimit = () => this.setState({ currentStep: this.state.currentStep + 1 });
 
     addGameData = (data: TGameData, callback: () => void) => {
-        const { playerData, gameData } = this.state;
+        const { playerData, gameData, gameLimit } = this.state;
 
         let winnersCount = 0;
         playerData.forEach((player: TPlayer) => {
-            if (data[player.key].score === 0) {
+            if (data[player.key] && data[player.key].score === 0) {
                 winnersCount += 1;
             }
         });
         if (!winnersCount) return Helper.alert('Alert', 'There should be atleast one winner.');
 
-        const updatedPlayerData = playerData.map((player: TPlayer) => ({
-            ...player,
-            value: player.value + data[player.key].score,
-        }));
+        let invalidPlayers = 0;
+        const updatedPlayerData = playerData.map((player: TPlayer) => {
+            const value = player.value + (data[player.key] ? data[player.key].score : 0);
+            if (value >= gameLimit) invalidPlayers++;
+            const newPlayer = {
+                ...player,
+                value,
+                invalid: value >= gameLimit,
+            };
+
+            return newPlayer;
+        });
 
         this.setState(
             {
                 gameData: [data, ...gameData],
                 playerData: updatedPlayerData,
             },
-            callback,
+            () => {
+                callback();
+                if (invalidPlayers >= playerData.length - 1) {
+                    this.showFinalStats();
+                }
+            },
         );
     };
 
@@ -133,22 +131,38 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
             { text: 'Cancel' },
             {
                 text: 'Proceed',
-                onPress: () => this.setState({ currentStep: this.state.currentStep + 1 }),
+                onPress: this.showFinalStats,
+            },
+        ]);
+    };
+
+    showFinalStats = () => {
+        this.setState({ currentStep: this.state.currentStep + 1 });
+    };
+
+    onResetGame = () => {
+        Helper.alert('Warning', 'This will reset any game in progress.', [
+            { text: 'Cancel' },
+            {
+                text: 'Proceed',
+                onPress: () => Helper.pushToRoute(this.props.navigation, 'Home'),
             },
         ]);
     };
 
     render() {
-        const { currentStep, gameLimit, playerData, gameData } = this.state;
+        const { currentStep, gameLimit, playerData, gameData, finalStats } = this.state;
 
         const sortedPlayerData = [...playerData].sort(
-            (player1: TPlayer, player2: TPlayer) => player2.value - player1.value,
+            (player1: TPlayer, player2: TPlayer) => player1.value - player2.value,
         );
 
         return (
             <View style={styles.root}>
                 <View style={styles.padHorizontal}>
-                    <Text style={styles.gameHeader}>5 Cards Game</Text>
+                    <Text style={styles.gameHeader}>
+                        5 Cards Game {gameLimit > 0 && currentStep >= 2 ? `(Limit: ${gameLimit})` : ''}
+                    </Text>
                     {currentStep === 0 && <AddPlayers addPlayers={this.addPlayers} label="Submit Players !" />}
                     {currentStep === 1 && (
                         <React.Fragment>
@@ -177,6 +191,7 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
                             />
                         </React.Fragment>
                     )}
+                    {currentStep === 3 && <Results data={finalStats} onResetGame={this.onResetGame} />}
                 </View>
                 {currentStep === 2 && (
                     <ScrollView style={styles.padHorizontal}>

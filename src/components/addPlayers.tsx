@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         paddingVertical: 9,
         paddingHorizontal: 10,
         width: '100%',
-        backgroundColor: Theme.colors.screen.blueDark,
+        backgroundColor: Theme.colors.screen.blue,
     },
     playerList: {
         width: '100%',
@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     startButtonText: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
+        fontWeight: 'bold',
         textAlign: 'center',
-        fontWeight: '900',
+        textTransform: 'uppercase',
         fontSize: 14,
     },
 });
@@ -83,7 +84,7 @@ export default class AddPlayers extends React.Component<TProps, TState> {
 
     addPlayers = () => {
         const { players } = this.state;
-        if (!players || !players.length) return Helper.alert('Alert', 'No Players Added.');
+        if (!players || players.length < 2) return Helper.alert('Alert', 'No Players Added.');
 
         this.props.addPlayers(players);
     };

@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import { TNavigation } from '@types';
 
 const alert = (
     title: string,
@@ -10,7 +11,7 @@ const alert = (
     Alert.alert(title, message, buttons, options);
 };
 
-const pushToRoute = (navigation, routeName, params) => {
+const pushToRoute = (navigation: TNavigation, routeName: string, params?: object) => {
     if (!navigation || !routeName) return;
     const navData = params ? { routeName, params } : { routeName };
     navigation.reset([NavigationActions.navigate(navData)], 0);

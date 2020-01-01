@@ -17,19 +17,19 @@ const styles = StyleSheet.create({
     roundLabelWrapper: {
         paddingVertical: 4,
         paddingHorizontal: 10,
-        backgroundColor: Theme.colors.screen.blueDark,
+        backgroundColor: Theme.colors.screen.blue,
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
     },
     roundLabelText: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         fontWeight: 'bold',
     },
     roundDetailsCtr: {
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
         borderTopRightRadius: 4,
-        borderColor: Theme.colors.border.blueDark,
+        borderColor: Theme.colors.border.blue,
         borderWidth: 2,
     },
     playerData: {
@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
         borderColor: Theme.colors.border.primary,
     },
     playerName: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         fontSize: 14,
         flex: 1,
         fontWeight: 'bold',
     },
     playerScore: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         fontSize: 14,
         flex: 1,
         paddingLeft: 10,

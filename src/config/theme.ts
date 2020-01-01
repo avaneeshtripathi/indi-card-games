@@ -4,28 +4,14 @@ const Colors = {
     white: '#ffffff',
     greyBlack: '#404553',
 
-    greyDark: '#777777',
-    greyLight: '#bcbcbc',
-    greyLighter: '#e2e5f1',
+    greyLight: '#e2e5f1',
     greyLightest: '#f7f7fa',
-    greyTransparent: '#00000057',
 
-    red: '#ed1c4d',
-    redLight: '#ff4747',
-    redLightest: '#ffdddd',
+    red: '#d43f3a',
 
-    orange: '#fecb51',
-    orangeLight: '#fff4dc',
+    blue: '#337ab7',
 
-    blue: '#3866df',
-    blueLight: '#4f79df',
-    blueLightest: '#dee8ff',
-
-    green: '#7ed321',
-    greenLight: '#f0ffdf',
-
-    yellow: '#feee00',
-    yellowLight: '#fffddf',
+    green: '#0f8a00',
 };
 
 const Fonts = {
@@ -42,40 +28,28 @@ export default {
     colors: {
         text: {
             primary: Colors.greyBlack,
-            secondary: Colors.greyDark,
-            tertiary: Colors.greyLight,
-            white: Colors.white,
-            blue: Colors.blue,
-            error: Colors.red,
-            success: Colors.green,
+            secondary: Colors.white,
         },
         screen: {
             primary: Colors.white,
-            secondary: Colors.greyLightest,
-            tertiary: Colors.yellow,
-            overlay: Colors.greyTransparent,
-            yellow: Colors.yellowLight,
-            orange: Colors.orangeLight,
-            blue: Colors.blueLightest,
-            blueDark: Colors.blue,
-            success: Colors.greenLight,
-            error: Colors.redLightest,
-            red: Colors.red,
+            secondary: Colors.greyBlack,
+            tertiary: Colors.greyLightest,
+            blue: Colors.blue,
             green: Colors.green,
+            red: Colors.red,
         },
         button: {
             primary: Colors.blue,
             secondary: Colors.white,
-            error: Colors.red,
-            warning: Colors.redLight,
+            tertiary: Colors.greyBlack,
+            red: Colors.red,
+            green: Colors.green,
         },
         border: {
-            primary: Colors.greyLighter,
-            error: Colors.red,
-            blue: Colors.blueLight,
-            blueDark: Colors.blue,
-            green: Colors.green,
-            orange: Colors.orange,
+            primary: Colors.greyLight,
+            secondary: Colors.white,
+            red: Colors.red,
+            blue: Colors.blue,
         },
     },
     fonts: {

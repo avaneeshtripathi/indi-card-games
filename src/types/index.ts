@@ -15,6 +15,7 @@ export type TPlayer = {
     key: number;
     label: string;
     value: number;
+    invalid?: boolean;
 };
 
 export type TGameData = {

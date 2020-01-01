@@ -127,7 +127,7 @@ export default class TeenPatti extends React.Component<TProps, TState> {
         });
     };
 
-    onResetGame = () => Helper.pushToRoute(this.props.navigation, 'Home', null);
+    onResetGame = () => Helper.pushToRoute(this.props.navigation, 'Home');
 
     render() {
         const { currentStep, playerData, gameData, finalStats } = this.state;

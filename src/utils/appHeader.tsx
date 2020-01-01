@@ -4,6 +4,7 @@ import Touchable from '@components/touchable';
 import Theme from '@config/theme';
 import Helper from '@utils/helper';
 import Images from '@assets/images';
+import { TNavigation } from '@types';
 
 const styles = StyleSheet.create({
     headerActionCtr: {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerTitleText: {
-        color: Theme.colors.text.white,
+        color: Theme.colors.text.secondary,
         fontSize: 24,
         textAlign: 'center',
         fontWeight: 'bold',
@@ -81,17 +82,17 @@ const styles = StyleSheet.create({
         right: 30,
         top: 26,
         fontSize: 10,
-        color: Theme.colors.text.tertiary,
+        color: Theme.colors.text.secondary,
     },
 });
 
-export default (navigation: object) => {
+export default (navigation: TNavigation) => {
     const handleLogoClick = () => {
         Helper.alert('Warning', 'This will reset any game in progress', [
             { text: 'Cancel' },
             {
                 text: 'Proceed',
-                onPress: () => Helper.pushToRoute(navigation, 'Home', null),
+                onPress: () => Helper.pushToRoute(navigation, 'Home'),
             },
         ]);
     };
@@ -118,7 +119,7 @@ export default (navigation: object) => {
         ),
         headerRight: <View />,
         headerStyle: {
-            backgroundColor: Theme.colors.screen.blueDark,
+            backgroundColor: Theme.colors.screen.blue,
             paddingTop: 10,
             paddingBottom: 10,
             elevate: 6,
