@@ -6,8 +6,8 @@ import { TPlayer } from '@types';
 const styles = StyleSheet.create({
     playerList: {
         width: '100%',
-        paddingBottom: 10,
-        marginBottom: 9,
+        paddingBottom: 6,
+        marginBottom: 8,
         borderBottomWidth: 1,
         borderColor: Theme.colors.border.primary,
         display: 'flex',

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
-import AddGameData from '@components/teenPatti/addGameData';
-import AddPlayers from '@components/teenPatti/addPlayers';
-import PlayerData from '@components/teenPatti/playerData';
+import AddGameData from '@components/addGameData';
+import AddPlayers from '@components/addPlayers';
+import PlayerData from '@components/playerData';
 import Results from '@components/teenPatti/results';
-import RoundData from '@components/teenPatti/roundData';
+import RoundData from '@components/roundData';
 import Theme from '@config/theme';
 import AppHeader from '@utils/appHeader';
 import Helper from '@utils/helper';
@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     gameHeader: {
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: 'bold',
         color: Theme.colors.text.primary,
         textAlign: 'center',
-        paddingVertical: 8,
-        marginBottom: 8,
+        paddingVertical: 6,
+        marginBottom: 6,
         borderBottomWidth: 1,
         borderColor: Theme.colors.border.primary,
     },

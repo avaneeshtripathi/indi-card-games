@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 
 type TProps = {
     data: {
-        winner: TPlayer;
+        winner: TPlayer | null;
         loosers: TPlayer[];
     };
     onResetGame: () => void;

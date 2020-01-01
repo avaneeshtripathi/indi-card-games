@@ -73,6 +73,7 @@ export default {
             primary: Colors.greyLighter,
             error: Colors.red,
             blue: Colors.blueLight,
+            blueDark: Colors.blue,
             green: Colors.green,
             orange: Colors.orange,
         },

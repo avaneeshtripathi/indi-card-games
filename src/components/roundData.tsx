@@ -4,17 +4,8 @@ import Theme from '@config/theme';
 import { TGameData } from '@types';
 
 const styles = StyleSheet.create({
-    playerList: {
-        width: '100%',
-        paddingBottom: 10,
-        marginBottom: 10,
-        borderBottomWidth: 1,
-        borderColor: Theme.colors.border.primary,
-        display: 'flex',
-        flexDirection: 'column',
-    },
     roundCtr: {
-        marginBottom: 14,
+        marginBottom: 8,
     },
     roundLabelCtr: {
         display: 'flex',
@@ -27,7 +18,6 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         paddingHorizontal: 10,
         backgroundColor: Theme.colors.screen.blueDark,
-        elevation: 4,
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
     },
@@ -36,13 +26,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     roundDetailsCtr: {
-        elevation: 2,
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
         borderTopRightRadius: 4,
-        borderColor: Theme.colors.border.primary,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
+        borderColor: Theme.colors.border.blueDark,
+        borderWidth: 2,
     },
     playerData: {
         display: 'flex',

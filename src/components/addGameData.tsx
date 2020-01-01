@@ -7,8 +7,8 @@ import { TPlayer, TGameData } from '@types';
 
 const styles = StyleSheet.create({
     root: {
-        marginBottom: 10,
-        paddingBottom: 10,
+        marginBottom: 8,
+        paddingBottom: 8,
         borderBottomWidth: 1,
         borderColor: Theme.colors.border.primary,
     },
@@ -32,16 +32,17 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+        marginBottom: 8,
     },
     input: {
         borderColor: Theme.colors.border.primary,
         borderWidth: 1,
-        borderRadius: 2,
+        borderRadius: 4,
         paddingVertical: 0,
         paddingHorizontal: 10,
-        fontSize: 13,
+        fontSize: 14,
         flex: 1,
+        height: 24,
     },
     playerName: {
         flex: 1,

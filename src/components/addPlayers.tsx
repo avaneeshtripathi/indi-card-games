@@ -12,13 +12,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: 10,
     },
-    inputWrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-    },
     input: {
         borderColor: Theme.colors.border.primary,
         borderWidth: 1,
@@ -55,6 +48,7 @@ const styles = StyleSheet.create({
 
 type TProps = {
     addPlayers: (players: TPlayer[]) => void;
+    label?: string;
 };
 
 type TState = {
@@ -96,6 +90,7 @@ export default class AddPlayers extends React.Component<TProps, TState> {
 
     render() {
         const { players } = this.state;
+        const { label: buttonLabel } = this.props;
 
         return (
             <View style={styles.root}>
@@ -117,7 +112,7 @@ export default class AddPlayers extends React.Component<TProps, TState> {
                 ) : null}
                 <Touchable onPress={this.addPlayers}>
                     <View style={styles.startButton}>
-                        <Text style={styles.startButtonText}>Start Game !</Text>
+                        <Text style={styles.startButtonText}>{buttonLabel || `Start Game !`}</Text>
                     </View>
                 </Touchable>
             </View>
