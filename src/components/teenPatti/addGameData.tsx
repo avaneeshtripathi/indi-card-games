@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     buttonCtr: {
         paddingVertical: 6,
         paddingHorizontal: 10,
-        backgroundColor: Theme.colors.screen.tertiary,
+        backgroundColor: Theme.colors.screen.blueDark,
         borderRadius: 4,
         elevation: 4,
     },
     buttonText: {
-        color: Theme.colors.text.tertiary,
-        fontWeight: '600',
+        color: Theme.colors.text.white,
+        fontWeight: 'bold',
     },
     formField: {
         display: 'flex',

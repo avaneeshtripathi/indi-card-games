@@ -32,9 +32,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerTitleText: {
-        color: Theme.colors.text.tertiary,
-        fontSize: 26,
+        color: Theme.colors.text.white,
+        fontSize: 24,
         textAlign: 'center',
+        fontWeight: 'bold',
     },
     updateIndicator: {
         position: 'absolute',
@@ -117,7 +118,7 @@ export default (navigation: object) => {
         ),
         headerRight: <View />,
         headerStyle: {
-            backgroundColor: Theme.colors.screen.tertiary,
+            backgroundColor: Theme.colors.screen.blueDark,
             paddingTop: 10,
             paddingBottom: 10,
             elevate: 6,

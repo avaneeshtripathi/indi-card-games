@@ -26,22 +26,23 @@ const styles = StyleSheet.create({
     roundLabelWrapper: {
         paddingVertical: 4,
         paddingHorizontal: 10,
-        backgroundColor: Theme.colors.screen.error,
+        backgroundColor: Theme.colors.screen.blueDark,
         elevation: 4,
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
     },
     roundLabelText: {
-        color: Theme.colors.text.tertiary,
-        fontWeight: '600',
+        color: Theme.colors.text.white,
+        fontWeight: 'bold',
     },
     roundDetailsCtr: {
-        borderWidth: 1,
-        borderColor: Theme.colors.border.primary,
-        elevation: 4,
+        elevation: 2,
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
         borderTopRightRadius: 4,
+        borderColor: Theme.colors.border.primary,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
     },
     playerData: {
         display: 'flex',
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
     },
     winner: {
-        backgroundColor: Theme.colors.screen.success,
+        backgroundColor: Theme.colors.screen.green,
     },
     looser: {
         backgroundColor: Theme.colors.screen.primary,
@@ -60,20 +61,23 @@ const styles = StyleSheet.create({
         borderColor: Theme.colors.border.primary,
     },
     playerName: {
-        color: Theme.colors.text.tertiary,
+        color: Theme.colors.text.white,
         fontSize: 14,
         flex: 1,
+        fontWeight: 'bold',
     },
     playerScore: {
-        color: Theme.colors.text.tertiary,
+        color: Theme.colors.text.white,
         fontSize: 14,
         flex: 1,
         paddingLeft: 10,
         borderLeftWidth: 1,
         borderColor: Theme.colors.border.primary,
+        fontWeight: 'bold',
     },
     playerLooser: {
         color: Theme.colors.text.primary,
+        fontWeight: 'normal',
     },
 });
 

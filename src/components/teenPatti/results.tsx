@@ -3,6 +3,7 @@ import { ScrollView, Text, ImageBackground, View, StyleSheet } from 'react-nativ
 import Theme from '@config/theme';
 import Touchable from '@components/touchable';
 import Images from '@assets/images';
+import { TPlayer } from '@types';
 
 const styles = StyleSheet.create({
     results: {
@@ -12,25 +13,15 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         justifyContent: 'center',
     },
-    finalStats: {
-        color: Theme.colors.text.primary,
-        fontSize: 20,
-    },
     winnerImageCtr: {
         borderRadius: 10,
         overflow: 'hidden',
         elevation: 4,
     },
-    winnerLabelWrapper: {
-        position: 'absolute',
-        bottom: 20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     winerLabel: {
         color: Theme.colors.text.primary,
         fontSize: 14,
+        fontWeight: 'bold',
         marginBottom: 4,
         position: 'absolute',
         top: 40,
@@ -38,6 +29,7 @@ const styles = StyleSheet.create({
     winerScore: {
         color: Theme.colors.text.primary,
         fontSize: 14,
+        fontWeight: 'bold',
         position: 'absolute',
         bottom: 40,
     },
@@ -66,12 +58,14 @@ const styles = StyleSheet.create({
     looserLabel: {
         color: Theme.colors.text.primary,
         fontSize: 12,
+        fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 4,
     },
     looserScore: {
         color: Theme.colors.text.primary,
         fontSize: 10,
+        fontWeight: 'bold',
         textAlign: 'center',
     },
     resetButton: {
@@ -79,18 +73,26 @@ const styles = StyleSheet.create({
         paddingVertical: 9,
         paddingHorizontal: 10,
         width: '100%',
-        backgroundColor: Theme.colors.screen.error,
+        backgroundColor: Theme.colors.screen.red,
         marginTop: 10,
     },
     resetButtonText: {
-        color: Theme.colors.text.tertiary,
+        color: Theme.colors.text.white,
         textAlign: 'center',
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 14,
     },
 });
 
-export default ({ data: { winner, loosers }, onResetGame }) => {
+type TProps = {
+    data: {
+        winner: TPlayer;
+        loosers: TPlayer[];
+    };
+    onResetGame: () => void;
+};
+
+export default ({ data: { winner, loosers }, onResetGame }: TProps) => {
     return (
         <View style={styles.results}>
             <View style={styles.winnerImageCtr}>
@@ -108,7 +110,7 @@ export default ({ data: { winner, loosers }, onResetGame }) => {
                     resizeMode="cover"
                 >
                     <Text style={styles.winerLabel}>{winner.label}</Text>
-                    <Text style={styles.winerScore}>{winner.value}</Text>
+                    <Text style={styles.winerScore}>+{winner.value}</Text>
                 </ImageBackground>
             </View>
             <ScrollView

@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     gameHeader: {
-        fontSize: 30,
-        color: Theme.colors.text.tertiary,
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: Theme.colors.text.primary,
         textAlign: 'center',
         paddingVertical: 8,
         marginBottom: 8,
@@ -138,7 +139,7 @@ export default class TeenPatti extends React.Component<TProps, TState> {
         return (
             <View style={styles.root}>
                 <View style={styles.padHorizontal}>
-                    <Text style={styles.gameHeader}>Teen Patti</Text>
+                    <Text style={styles.gameHeader}>3 Patti</Text>
                     {currentStep === 0 && <AddPlayers addPlayers={this.addPlayers} />}
                     {currentStep === 1 && (
                         <React.Fragment>

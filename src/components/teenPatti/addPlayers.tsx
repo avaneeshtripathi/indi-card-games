@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         paddingVertical: 9,
         paddingHorizontal: 10,
         width: '100%',
-        backgroundColor: Theme.colors.screen.error,
+        backgroundColor: Theme.colors.screen.blueDark,
     },
     playerList: {
         width: '100%',
@@ -42,13 +42,13 @@ const styles = StyleSheet.create({
     },
     playerName: {
         color: Theme.colors.text.primary,
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 14,
     },
     startButtonText: {
-        color: Theme.colors.text.tertiary,
+        color: Theme.colors.text.white,
         textAlign: 'center',
-        fontWeight: '600',
+        fontWeight: '900',
         fontSize: 14,
     },
 });

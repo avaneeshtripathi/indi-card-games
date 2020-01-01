@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     },
     playerName: {
         color: Theme.colors.text.primary,
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 14,
         flex: 1,
     },
     playerScore: {
         color: Theme.colors.text.primary,
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 14,
         flex: 1,
     },

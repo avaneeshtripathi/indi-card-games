@@ -1,16 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageBackground, ImageSourcePropType } from 'react-native';
 import Theme from '@config/theme';
 import Touchable from '@components/touchable';
 
 const styles = StyleSheet.create({
     root: {
         backgroundColor: Theme.colors.screen.primary,
-        borderColor: Theme.colors.border.primary,
-        borderWidth: 1,
         borderRadius: 8,
         marginBottom: 20,
-        elevation: 6,
+        elevation: 2,
         width: '100%',
     },
     cardWrapper: {
@@ -23,17 +21,34 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         marginBottom: 10,
-        borderColor: Theme.colors.border.primary,
+        borderColor: Theme.colors.border.orange,
         borderWidth: 4,
         borderRadius: 8,
     },
+    gameLabelCtr: {
+        paddingVertical: 6,
+        width: '100%',
+        alignItems: 'center',
+        backgroundColor: Theme.colors.screen.primary,
+        elevation: 2,
+    },
     gameLabel: {
-        fontSize: 30,
-        color: Theme.colors.text.tertiary,
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: Theme.colors.text.primary,
     },
 });
 
-export default ({ data, onSelect }) => {
+type TProps = {
+    data: {
+        screen: string;
+        image: ImageSourcePropType;
+        label: string;
+    };
+    onSelect: (screen: string) => void;
+};
+
+export default ({ data, onSelect }: TProps) => {
     const onPress = () => onSelect(data.screen);
 
     return (
@@ -45,11 +60,13 @@ export default ({ data, onSelect }) => {
                         width: '100%',
                     }}
                     resizeMode="cover"
-                    opacity={0.05}
+                    opacity={0.7}
                 >
                     <View style={styles.cardWrapper}>
                         <Image style={styles.gameImage} source={data.image} />
-                        <Text style={styles.gameLabel}>{data.label}</Text>
+                        <View style={styles.gameLabelCtr}>
+                            <Text style={styles.gameLabel}>{data.label}</Text>
+                        </View>
                     </View>
                 </ImageBackground>
             </View>
