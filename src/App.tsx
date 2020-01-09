@@ -14,7 +14,6 @@ import PanjiPakad from '@screens/panjiPakad';
 const AppNavigator = createStackNavigator({
     Home: {
         screen: HomeScreen,
-        // navigationOptions: () => ({ header: null }),
     },
     TeenPatti: { screen: TeenPatti },
     PanjiPakad: { screen: PanjiPakad },

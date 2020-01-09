@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet, SafeAreaView } from 'react-native';
+import { ScrollView, View, StyleSheet, SafeAreaView, Text } from 'react-native';
 import GameCard from '@components/gameCard';
 import Theme from '@config/theme';
 import { GAME_LIST } from '@config/config';
@@ -22,6 +22,18 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         marginBottom: 10,
+    },
+    creditsCtr: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        left: 0,
+    },
+    creditLabel: {
+        textAlign: 'center',
+        color: Theme.colors.text.primary,
+        fontWeight: 'bold',
+        fontSize: 10,
     },
 });
 
@@ -48,6 +60,9 @@ export default class HomeScreen extends React.Component<TProps, TState> {
                         {GAME_LIST.map((game: TGameCard, index: number) =>
                             game.isEnabled ? <GameCard key={index} data={game} onSelect={this.onGameSelect} /> : null,
                         )}
+                    </View>
+                    <View style={styles.creditsCtr}>
+                        <Text style={styles.creditLabel}>With ❤️ from @v!</Text>
                     </View>
                 </ScrollView>
             </SafeAreaView>

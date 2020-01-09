@@ -75,7 +75,6 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
         gameLimit: 0,
         playerData: [],
         gameData: [],
-        finalStats: { winner: null, loosers: [] },
     };
 
     addPlayers = (playerData: TPlayer[]) =>
@@ -151,7 +150,7 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
     };
 
     render() {
-        const { currentStep, gameLimit, playerData, gameData, finalStats } = this.state;
+        const { currentStep, gameLimit, playerData, gameData } = this.state;
 
         const sortedPlayerData = [...playerData].sort(
             (player1: TPlayer, player2: TPlayer) => player1.value - player2.value,
@@ -191,7 +190,9 @@ export default class PanjiPakad extends React.Component<TProps, TState> {
                             />
                         </React.Fragment>
                     )}
-                    {currentStep === 3 && <Results data={finalStats} onResetGame={this.onResetGame} />}
+                    {currentStep === 3 && (
+                        <Results playerData={playerData} gameData={gameData} onResetGame={this.onResetGame} />
+                    )}
                 </View>
                 {currentStep === 2 && (
                     <ScrollView style={styles.padHorizontal}>

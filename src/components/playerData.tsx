@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         borderColor: Theme.colors.border.primary,
         display: 'flex',
         flexDirection: 'column',
+        paddingHorizontal: 10,
     },
     labelCtr: {
         paddingVertical: 2,
