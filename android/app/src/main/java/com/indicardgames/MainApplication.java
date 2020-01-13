@@ -1,4 +1,4 @@
-package com.indiecardgames;
+package com.indicardgames;
 
 import android.app.Application;
 import android.content.Context;

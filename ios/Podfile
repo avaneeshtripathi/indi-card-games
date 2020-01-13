@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'indieCardGames' do
-  # Pods for indieCardGames
+target 'indieCards' do
+  # Pods for indieCards
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'indieCardGames' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'indieCardGamesTests' do
+  target 'indieCardsTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'indieCardGames' do
   use_native_modules!
 end
 
-target 'indieCardGames-tvOS' do
-  # Pods for indieCardGames-tvOS
+target 'indieCards-tvOS' do
+  # Pods for indieCards-tvOS
 
-  target 'indieCardGames-tvOSTests' do
+  target 'indieCards-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
