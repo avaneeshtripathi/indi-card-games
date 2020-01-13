@@ -12,15 +12,34 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: 10,
     },
+    inputCtr: {
+        flexDirection: 'row',
+        width: '100%',
+    },
     input: {
         borderColor: Theme.colors.border.primary,
         borderWidth: 1,
-        borderRadius: 4,
+        borderTopLeftRadius: 4,
+        borderBottomLeftRadius: 4,
         paddingVertical: 4,
         paddingHorizontal: 10,
         width: '100%',
         fontSize: 14,
         marginBottom: 10,
+        flex: 1,
+    },
+    addBtnCtr: {
+        backgroundColor: Theme.colors.screen.blue,
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+        marginBottom: 10,
+        borderTopRightRadius: 4,
+        borderBottomRightRadius: 4,
+    },
+    addBtnLabel: {
+        color: Theme.colors.text.secondary,
+        fontWeight: '900',
+        fontSize: 24,
     },
     startButton: {
         borderRadius: 4,
@@ -66,10 +85,19 @@ export default class AddPlayers extends React.Component<TProps, TState> {
     onSubmitEditing = ({ nativeEvent }: { nativeEvent: any }) => {
         if (!nativeEvent.text) return this.resetInput();
 
-        const playerName = nativeEvent.text.toUpperCase();
+        this.addPlayerName(nativeEvent.text);
+    };
+
+    onSubmitPlayerName = () => {
+        if (!(this.textInput && this.textInput._lastNativeText)) return this.resetInput();
+
+        this.addPlayerName(this.textInput._lastNativeText);
+    };
+
+    addPlayerName = (player: string) => {
         this.setState(
             ({ players }) => ({
-                players: [...players, { key: new Date().getTime(), label: playerName, value: 0 }],
+                players: [...players, { key: new Date().getTime(), label: player.toUpperCase(), value: 0 }],
             }),
             this.resetInput,
         );
@@ -95,13 +123,20 @@ export default class AddPlayers extends React.Component<TProps, TState> {
 
         return (
             <View style={styles.root}>
-                <TextInput
-                    ref={input => (this.textInput = input)}
-                    autoFocus
-                    style={styles.input}
-                    onSubmitEditing={this.onSubmitEditing}
-                    placeholder="Enter Player Name"
-                />
+                <View style={styles.inputCtr}>
+                    <TextInput
+                        ref={input => (this.textInput = input)}
+                        autoFocus
+                        style={styles.input}
+                        onSubmitEditing={this.onSubmitEditing}
+                        placeholder="Enter Player Name"
+                    />
+                    <Touchable onPress={this.onSubmitPlayerName}>
+                        <View style={styles.addBtnCtr}>
+                            <Text style={styles.addBtnLabel}>+</Text>
+                        </View>
+                    </Touchable>
+                </View>
                 {players && players.length ? (
                     <View style={styles.playerList}>
                         {players.map(({ label }, index) => (
